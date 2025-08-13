@@ -1,0 +1,221 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="description" content="Intranet"/>
+    <meta name="keywords" content="Intranet"/>
+
+    <title>Intranet</title>
+    <link rel="shortcut icon" href="https://www.hyundai.com/static/images/common/favicon/favicon.ico"/>
+
+    <link rel="stylesheet" href="https://intra.asobi.co.kr/css/default.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="https://intra.asobi.co.kr/js/jquery-ui-1.11.4.css"/>
+    <link rel="stylesheet" href="https://intra.asobi.co.kr/js/nyroModal.css" type="text/css"/>
+    <link rel="stylesheet" href="https://intra.asobi.co.kr/member/_skin/t_basic/member.css" type="text/css"/>
+    <link rel="stylesheet" href="https://intra.asobi.co.kr/css/bootstrap-select.css">
+    <link rel="stylesheet" href="https://intra.asobi.co.kr/css/intranet.default.css">
+
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.nyroModal.custom.min.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.alphanumeric.pack.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/common.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.cookie.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/validation.kdy2.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/spamFree.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/design/common.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/design/link.js"></script>
+
+
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.animate-shadow-min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://intra.asobi.co.kr/js/bootstrap-select.js"></script>
+
+
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.placeholder.js"></script>
+
+
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/selectivizr-min.js"></script>
+
+    <!-- <script type="text/javascript" src="/home/asobi_web_intra/www/intra.asobi.co.kr/js/jquery-1.7.1.min.js"></script> -->
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery-ui-1.11.4.js"></script>    
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.bootstrap.dialog.js"></script>
+
+    <link rel="stylesheet" href="https://intra.asobi.co.kr/js/jquery.bootstrap.dialog.css">
+    <script type="text/javascript" src="https://intra.asobi.co.kr/js/jquery.uploadPreview.js"></script>
+
+</head>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#loginForm :input[type=text]:visible:enabled:first").focus();
+
+	if( $.cookie("cookie_id") != null )
+	{
+		$("input[name=id]").val( $.cookie("cookie_id") );
+		$("input[name='id_save']:checkbox").attr("checked", true);
+        $("input[name=pw]").focus();
+	}
+
+	$("#btn_login").click(function(){
+		if( $("input[name=id]").val() == "" )
+		{
+			alert("Please enter your ID");
+			$("input[name=id]").focus();
+			return false;
+		}
+
+		if( $("input[name=pw]").val() == "" )
+		{
+			alert("Please enter your password");
+			$("input[name=pw]").focus();
+			return false;
+		}
+
+		if( $("input[name=id_save]:checkbox").attr("checked") )
+		{
+			if ($.cookie("cookie_id") == null)
+				{
+			$.cookie("cookie_id", $("input[name=id]").val(), { expires: 365, path: '/' });
+           }
+			else
+			{
+				if ($.cookie("cookie_id") != $("input[name=id]").val() )
+				{
+					$.cookie("cookie_id", null);
+					$.cookie("cookie_id", $("input[name=id]").val(), { expires: 365, path: '/' });
+				}
+            }
+
+		}
+
+		$("#loginForm").submit();
+
+	});
+
+	$(".input_basic").keydown(function(e){
+		if(e.keyCode == 13){
+			$("#btn_login").trigger("click");
+			return;
+		}
+	});
+});
+    function test_login(type){
+        if(type == 1){
+            $("input[name=id]").val('aso10199');
+        }else if(type == 2) {
+            $("input[name=id]").val('aso10431_1');
+        }
+        $("input[name=pw]").val('1111');
+        $("#btn_login").click();
+
+    }
+</script>
+
+<!-- member start -->
+
+
+<div class="loginWrap">
+
+	<div class="loginHead">
+		<img src="https://i.namu.wiki/i/FmIBu0t71SurOmv1Kk1pKdoeUIvbqCrGbBwM0fap-QWGA-zcetSZi5Ukovak_X3NJ3Xg-4EV5Qtt3VIX4QijrcciTgfa652P4QCdTqabTW0yFHDVwyHK9vFedANJ8N38vLlMhxG7BAfv1FQ2qzWUDQ.svg" style="width:80px;"/>
+		<span class="loginHeadText">Intranet Login</span>
+	</div>
+
+	<div class="loginBody">
+
+
+<form name="loginForm" id="loginForm" method="post" action="https://www.hyundai.com/worldwide/en">
+<div id="gray_member">
+
+	<ul class="login">
+		<li class="fr" style="padding-top:15px;"><a href="https://www.hyundai.com/worldwide/en" id="btn_login" tabindex="3" class="btnLogin">Login</a></li>
+		<li class="pt02"><label for="id">ID</label><input type="text" name="id" id="id" tabindex="1" class="input_basic" style="width:170px;" /></li>
+		<li class="pt10"><label for="pw">Password</label><input type="password" id="pw" name="pw" tabindex="2" class="input_basic" style="width:170px;" /></li>
+		<p class="cl pt10 al ml40"><input type="checkbox" name="id_save" id="id_save" class="ra_check" /> <label for="id_save">Save ID</label></p>
+	</ul>
+	<!--
+	<ul class="login_idpw_w">
+		<li class="idpw">Forgot your ID/Password?<a href="javascript:mem_id_pw()" class="btn_login_b01">Find ID/Password</a></li>
+	</ul>
+	-->
+</div>
+</form>
+
+
+
+	</div>
+
+
+
+</div>
+
+
+
+<style>
+
+	.loginWrap {border:1px solid #dfdfdf;width:450px;padding:0px;margin:0 auto;background:#ffffff;
+		border-radius:10px;margin-top:100px;overflow:hidden;
+
+  -webkit-box-shadow: 0px 0px 30px #999999;
+  -moz-box-shadow: 0px 0px 30px #999999;
+  box-shadow: 0px 0px 30px #999999;
+
+	}
+
+
+	.loginHead {background:#ffffff;padding:20px 20px 20px 20px;border-bottom:1px solid #dfdfdf;}
+	.loginHead .loginHeadText {padding:30px 0px 0px 80px;;font-size:24px;font-weight:bold;line-height:24px;}
+	.loginBody {padding:0px 20px 20px 20px;border-bottom:1px solid #dfdfdf;
+
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e2e2e2+100 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(226,226,226,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(226,226,226,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(226,226,226,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e2e2e2',GradientType=0 ); /* IE6-9 */
+
+	}
+	.loginTail {background:#ffffff;padding:20px;}
+
+
+
+.btnLogin {
+
+  background: #ff6600;
+  background-image: -webkit-linear-gradient(top, #ff6600, #b85c2b);
+  background-image: -moz-linear-gradient(top, #ff6600, #b85c2b);
+  background-image: -ms-linear-gradient(top, #ff6600, #b85c2b);
+  background-image: -o-linear-gradient(top, #ff6600, #b85c2b);
+  background-image: linear-gradient(to bottom, #ff6600, #b85c2b);
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 2px #050505;
+  -moz-box-shadow: 0px 0px 2px #050505;
+  box-shadow: 0px 0px 2px #050505;
+  font-family: "NanumGothic","sans-serif";
+  color: #ffffff;
+  font-size: 20px;
+  font-weight:bold;
+  padding: 15px 20px 15px 20px;
+  border: solid #c47220 0px;
+  text-decoration: none;
+}
+
+.btnLogin:hover {
+  background: #fca63c;
+  background-image: -webkit-linear-gradient(top, #fca63c, #d97934);
+  background-image: -moz-linear-gradient(top, #fca63c, #d97934);
+  background-image: -ms-linear-gradient(top, #fca63c, #d97934);
+  background-image: -o-linear-gradient(top, #fca63c, #d97934);
+  background-image: linear-gradient(to bottom, #fca63c, #d97934);
+  text-decoration: none;
+}
+
+</style>
+<!-- member end -->
